@@ -175,19 +175,27 @@ body {
     )
 
 class Product:
-    def __init__(self, name, price, img):
+    def __init__(self, name, price, description, stock ,img):
         self.__name = name
         self.__price = price
         self.__img = img
+        self.__description = description
+        self.__stock  = stock
 
     def get_name(self):
         return self.__name
 
     def get_price(self):
         return self.__price
-    
+
     def get_img(self):
         return self.__img
+
+    def get_description(self):
+        return self.__description
+    
+    def get_stock(self):
+        return self.__stock
     
 class System:
     def __init__(self):
@@ -207,49 +215,49 @@ class System:
         return result
             
 system = System()
-product1 = Product("Apple iPhone 13 128GB Midnight", "฿17,200", "PIC\Apple iPhone 13 128GB Midnight.png")
-product2 = Product("Apple iPhone 16e 128GB Black", "฿22,900", "PIC\Apple iPhone 16e 128GB Black.png")
-product3 = Product("Apple iPhone 16e 128GB White", "฿22,900", "PIC\Apple iPhone 16e 128GB White.png")
-product4 = Product("ร่ม Jisulife FA52 Portal Umbrella Fan Pink", "฿1,190", "PIC\ร่ม Jisulife FA52 Portal Umbrella Fan Pink.png")
-product5 = Product("Apple iPhone 16 Pro Max 256GB Desert Titanium", "฿46,400", "PIC\Apple iPhone 16 Pro Max 256GB Desert Titanium.png")
-product6 = Product("Apple Watch Series 10 GPS 42mm Rose Gold Aluminium Case with Light Blush Sport Band - S/M", "฿13,300", "PIC\Apple Watch Series 10 GPS 42mm Rose Gold Aluminium Case with Light Blush Sport Band.png")
-product7 = Product("Apple iPad Mini 7 (2024) Wi-Fi 256GB 8.3 inch Blue", "฿21,900", "PIC\Apple iPad Mini 7 (2024) Wi-Fi 256GB 8.3 inch Blue.png")
-product8 = Product("สมาร์ทโฟน Samsung Galaxy S25 (12+512) Silver Shadow (5G)", "฿34,900", "PIC\สมาร์ทโฟน Samsung Galaxy S25 (12+512) Silver Shadow (5G).png")
-product9 = Product("Apple iPhone 16","฿28,700","PIC\9.png")
-product10 = Product("Apple iPhone 16 Plus","฿34,400","PIC/Apple iPhone 16 Plus.png")
-product11 = Product("Apple iPad mini 7 (A17 Pro) Wi-Fi 8.3 inch","฿17,900","PIC/Apple iPad mini 7.png")
-product12 = Product("Apple iPad Air 5 Wi-Fi + Cellular 10.9 inch 2022","฿20,900","PIC/12.png")
-product13 = Product("Apple MacBook Pro 14 M4 chip","฿54,900","PIC/13.png")
-product14 = Product("Apple iMac 24 M4 chip Nano-texture glass","฿58,900","PIC/14.png")
-product15 = Product("หูฟังไร้สาย Apple AirPods 4","฿4,150","PIC/15.png")
-product16 = Product("Apple AirPods Max - Purple","฿19,900","PIC/16.png")
-product17 = Product("หูฟังไร้สาย Beats Studio Buds Black","฿4,500","PIC/17.png")
-product18 = Product("Apple Watch Series 10 (42mm) Aluminium","฿13,300","PIC/18.png")
-product19 = Product("Apple Watch Series  9 (45mm) Aluminium","฿12,200","PIC/19.png")
-product20 = Product("Apple 20W USB-C Port Power Adapter","฿640","PIC/20.png")
-product21 = Product("Apple USB-C to Lightning Cable (1m)","฿750","PIC/21.png")
+product1 = Product("Apple iPhone 13 128GB Midnight", "฿17,200", "qwe", 5, "PIC\Apple iPhone 13 128GB Midnight.png")
+product2 = Product("Apple iPhone 16e 128GB Black", "฿22,900", "qwe", 5, "PIC\Apple iPhone 16e 128GB Black.png")
+product3 = Product("Apple iPhone 16e 128GB White", "฿22,900", "qwe", 5, "PIC\Apple iPhone 16e 128GB White.png")
+# product4 = Product("ร่ม Jisulife FA52 Portal Umbrella Fan Pink", "฿1,190", "PIC\ร่ม Jisulife FA52 Portal Umbrella Fan Pink.png")
+# product5 = Product("Apple iPhone 16 Pro Max 256GB Desert Titanium", "฿46,400", "PIC\Apple iPhone 16 Pro Max 256GB Desert Titanium.png")
+# product6 = Product("Apple Watch Series 10 GPS 42mm Rose Gold Aluminium Case with Light Blush Sport Band - S/M", "฿13,300", "PIC\Apple Watch Series 10 GPS 42mm Rose Gold Aluminium Case with Light Blush Sport Band.png")
+# product7 = Product("Apple iPad Mini 7 (2024) Wi-Fi 256GB 8.3 inch Blue", "฿21,900", "PIC\Apple iPad Mini 7 (2024) Wi-Fi 256GB 8.3 inch Blue.png")
+# product8 = Product("สมาร์ทโฟน Samsung Galaxy S25 (12+512) Silver Shadow (5G)", "฿34,900", "PIC\สมาร์ทโฟน Samsung Galaxy S25 (12+512) Silver Shadow (5G).png")
+# product9 = Product("Apple iPhone 16","฿28,700","PIC\9.png")
+# product10 = Product("Apple iPhone 16 Plus","฿34,400","PIC/Apple iPhone 16 Plus.png")
+# product11 = Product("Apple iPad mini 7 (A17 Pro) Wi-Fi 8.3 inch","฿17,900","PIC/Apple iPad mini 7.png")
+# product12 = Product("Apple iPad Air 5 Wi-Fi + Cellular 10.9 inch 2022","฿20,900","PIC/12.png")
+# product13 = Product("Apple MacBook Pro 14 M4 chip","฿54,900","PIC/13.png")
+# product14 = Product("Apple iMac 24 M4 chip Nano-texture glass","฿58,900","PIC/14.png")
+# product15 = Product("หูฟังไร้สาย Apple AirPods 4","฿4,150","PIC/15.png")
+# product16 = Product("Apple AirPods Max - Purple","฿19,900","PIC/16.png")
+# product17 = Product("หูฟังไร้สาย Beats Studio Buds Black","฿4,500","PIC/17.png")
+# product18 = Product("Apple Watch Series 10 (42mm) Aluminium","฿13,300","PIC/18.png")
+# product19 = Product("Apple Watch Series  9 (45mm) Aluminium","฿12,200","PIC/19.png")
+# product20 = Product("Apple 20W USB-C Port Power Adapter","฿640","PIC/20.png")
+# product21 = Product("Apple USB-C to Lightning Cable (1m)","฿750","PIC/21.png")
 
 system.add_product(product1)
 system.add_product(product2)
 system.add_product(product3)
-system.add_product(product4)
-system.add_product(product5)
-system.add_product(product6)
-system.add_product(product7)
-system.add_product(product8)
-system.add_product(product9)
-system.add_product(product10)
-system.add_product(product11)
-system.add_product(product12)
-system.add_product(product13)
-system.add_product(product14)
-system.add_product(product15)
-system.add_product(product16)
-system.add_product(product17)
-system.add_product(product18)
-system.add_product(product19)
-system.add_product(product20)
-system.add_product(product21)
+# system.add_product(product4)
+# system.add_product(product5)
+# system.add_product(product6)
+# system.add_product(product7)
+# system.add_product(product8)
+# system.add_product(product9)
+# system.add_product(product10)
+# system.add_product(product11)
+# system.add_product(product12)
+# system.add_product(product13)
+# system.add_product(product14)
+# system.add_product(product15)
+# system.add_product(product16)
+# system.add_product(product17)
+# system.add_product(product18)
+# system.add_product(product19)
+# system.add_product(product20)
+# system.add_product(product21)
 
 @rt('/')
 def get():

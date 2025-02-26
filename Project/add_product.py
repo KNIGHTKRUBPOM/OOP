@@ -27,6 +27,36 @@ body {
     font-weight: bold;
     color: #f39c12;
 }
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    height: 50px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+.search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: black;
+    background: transparent;
+}
+.search-btn {
+    background: #f39c12;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 0 20px 20px 0;
+    transition: background 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #e67e22;
+}
 .product-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -54,28 +84,17 @@ body {
     border-top: 1px solid #ddd;
     margin-top: auto;
 }
-.btn {
+button {
     background: #f39c12;
     color: white;
-    padding: 5px 10px; /* ลด padding ให้ปุ่มเล็กลง */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
-    font-size: 14px; /* ลดขนาดตัวอักษร */
-    flex: 1; /* ให้ปุ่มมีขนาดเท่ากัน */
-    text-align: center;
-    min-width: 80px; /* ป้องกันปุ่มเล็กเกินไป */
 }
-.btn:hover {
+button:hover {
     background: #e67e22;
-}
-.button-container {
-    display: flex;
-    gap: 5px; /* ลดช่องว่างระหว่างปุ่ม */
-    margin-top: 10px;
-    width: 100%;
-    max-width: 300px; /* จำกัดความกว้างของ container */
 }
 input {
     background-color: white;
@@ -96,10 +115,12 @@ UPLOAD_DIR = "PIC"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class Product:
-    def __init__(self, name, price, img):
+    def __init__(self, name, price, description, stock ,img):
         self.__name = name
         self.__price = price
         self.__img = img
+        self.__description = description
+        self.__stock  = stock
 
     def get_name(self):
         return self.__name
@@ -110,6 +131,12 @@ class Product:
     def get_img(self):
         return self.__img
 
+    def get_description(self):
+        return self.__description
+    
+    def get_stock(self):
+        return self.__stock
+    
 class System:
     def __init__(self):
         self.__lst_product = []
@@ -129,12 +156,10 @@ def get():
         Form(
             Input(id="name", placeholder="ชื่อสินค้า"),
             Input(id="price", placeholder="ราคาสินค้า"),
+            Input(id="description", placeholder="รายละเอียดสินค้า"),
+            Input(id="quantity", placeholder="จำนวน"),
             Input(type="file", id="img", name="img"),
-            Div(
-                Button("Add", type="button", cls="btn"),  # ปุ่ม Add
-                Button("Submit", type="submit", cls="btn"),  # ปุ่ม Submit
-                cls="button-container"
-            ),
+            Button("Add"),
             hx_post="/add",
             hx_target="#items",
             hx_swap="beforeend",
@@ -152,13 +177,13 @@ def get():
     )
 
 @rt('/add')
-def post(name: str, price: str, img: UploadFile):
+def post(name: str, price: str, description:str ,quantity:str ,img: UploadFile):
     file_path = os.path.join(UPLOAD_DIR, img.filename)
     with open(file_path, "wb") as f:
         f.write(img.file.read())
     relative_path = f"{UPLOAD_DIR}/{img.filename}"
 
-    product = Product(name, price, relative_path)
+    product = Product(name, price, description, description, relative_path)
     system.add_product(product)
     
     return Div(
@@ -169,3 +194,4 @@ def post(name: str, price: str, img: UploadFile):
     )
 
 serve()
+
